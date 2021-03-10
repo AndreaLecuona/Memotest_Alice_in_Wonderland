@@ -1,0 +1,60 @@
+.card{
+    width: 150px;
+    height: 170px;
+    position: relative;
+    transform-style: preserve-3d;
+    .face{
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        transform: perspective(500px) rotateY(0deg);
+        transition: 1s ease-in-out;
+        &.front{
+            // background-image: url(../css/img/hotel-wallpaper.png);
+            background-color: beige;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blend-mode: multiply;
+        }
+        &.back{
+            background-color: burlywood;
+            transform: perspective(500px) rotateY(180deg);
+            &.drink{
+                background-color: $yellow;
+            }
+            &.cat{
+                background-color: $blue;
+            }
+            &.hat{
+                background-color: $pink;
+            }
+            &.key{
+                background-color: $purple;
+            }
+            &.lock{
+                background-color: $blue;
+            }
+            &.teacup{
+                background-color: $yellow;
+            }
+        }
+        img{
+            transform: perspective(500px) translateZ(50px);
+        }
+    }
+}
+
+.card:hover .face.front{
+    transform: perspective(500px) rotateY(180deg)
+}
+.card:hover .face.back{
+    transform: perspective(500px) rotateY(360deg)
+}
