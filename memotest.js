@@ -49,4 +49,13 @@ const unflip = function() {
 };
 
 
+const shuffleCards = function() {
+    cards.forEach(card => {
+        let randomIndex = Math.floor(Math.random() * cards.length);
+        card.style.order = randomIndex;
+    });
+};
+
+shuffleCards();
+
 cards.forEach(card => card.addEventListener('click', flipCards));
