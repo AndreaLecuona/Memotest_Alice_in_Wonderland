@@ -1,10 +1,15 @@
 const cards = document.querySelectorAll('.card');
 
 let alreadyFlippedSomething = false;
+let lockBoard = false;
 let firstCard;
 let secondCard;
 
+
 const flipCards = function() {
+    if(lockBoard) return;
+    if(this === firstCard) return;
+    
     this.classList.toggle('flip');
 
     //identify selected cards
@@ -20,6 +25,7 @@ const flipCards = function() {
 
 };
 
+
 const checkMatch = function() {
     let doMatch = firstCard.dataset.icon === secondCard.dataset.icon;
     doMatch ? blockCards() : unflip();
@@ -31,11 +37,16 @@ const blockCards = function() {
     secondCard.removeEventListener('click', flipCards);
 };
 
+
 const unflip = function() {
+    lockBoard = true;
+
     setTimeout( () => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+        lockBoard = false;
     }, 1500);
 };
+
 
 cards.forEach(card => card.addEventListener('click', flipCards));
