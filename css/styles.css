@@ -120,8 +120,8 @@ img {
           backface-visibility: hidden;
   -webkit-transform: perspective(500px) rotateY(0deg);
           transform: perspective(500px) rotateY(0deg);
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
 }
 
 .card .face.front {
@@ -166,12 +166,12 @@ img {
           transform: perspective(500px) translateZ(50px);
 }
 
-.card:hover .face.front {
+.card.flip .face.front {
   -webkit-transform: perspective(500px) rotateY(180deg);
           transform: perspective(500px) rotateY(180deg);
 }
 
-.card:hover .face.back {
+.card.flip .face.back {
   -webkit-transform: perspective(500px) rotateY(360deg);
           transform: perspective(500px) rotateY(360deg);
 }

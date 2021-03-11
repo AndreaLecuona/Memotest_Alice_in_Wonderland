@@ -16,7 +16,7 @@
         align-items: center;
         backface-visibility: hidden;
         transform: perspective(500px) rotateY(0deg);
-        transition: 1s ease-in-out;
+        transition: 0.7s ease-in-out;
         &.front{
             // background-image: url(../css/img/hotel-wallpaper.png);
             background-color: beige;
@@ -52,9 +52,9 @@
     }
 }
 
-.card:hover .face.front{
-    transform: perspective(500px) rotateY(180deg)
+.card.flip .face.front{
+    transform: perspective(500px) rotateY(180deg);
 }
-.card:hover .face.back{
-    transform: perspective(500px) rotateY(360deg)
+.card.flip .face.back{
+    transform: perspective(500px) rotateY(360deg);
 }
