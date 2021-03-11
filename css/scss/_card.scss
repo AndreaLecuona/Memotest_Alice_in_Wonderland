@@ -19,13 +19,12 @@
         transition: 0.7s ease-in-out;
         &.front{
             // background-image: url(../css/img/hotel-wallpaper.png);
-            background-color: beige;
+            background-color: rgb(252, 252, 227);
             background-size: cover;
             background-repeat: no-repeat;
             background-blend-mode: multiply;
         }
         &.back{
-            background-color: burlywood;
             transform: perspective(500px) rotateY(180deg);
             &.drink{
                 background-color: $yellow;

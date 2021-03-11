@@ -125,14 +125,13 @@ img {
 }
 
 .card .face.front {
-  background-color: beige;
+  background-color: #fcfce3;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
 }
 
 .card .face.back {
-  background-color: burlywood;
   -webkit-transform: perspective(500px) rotateY(180deg);
           transform: perspective(500px) rotateY(180deg);
 }
