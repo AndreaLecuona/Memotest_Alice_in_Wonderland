@@ -5,6 +5,9 @@ let lockBoard = false;
 let firstCard;
 let secondCard;
 
+//for time mode
+let correctPairs = 0;
+//
 
 const flipCards = function() {
     if(lockBoard) return;
@@ -35,6 +38,9 @@ const checkMatch = function() {
 const blockCards = function() {
     firstCard.removeEventListener('click', flipCards);
     secondCard.removeEventListener('click', flipCards);
+    correctPairs++;
+
+    checkVictory();
 };
 
 
@@ -55,8 +61,19 @@ const shuffleCards = function() {
         card.style.order = randomIndex;
     });
 };
-
 shuffleCards();
+
+const checkVictory = function(){
+    if(correctPairs !== cards.length / 2) return;
+    setTimeout(() => {
+        lockBoard = true;
+        
+        //popup with victory message + restart option or mode change (should unlock the board after)
+        alert('you win!');
+
+    }, 1000);
+};
+
 
 
 
@@ -64,10 +81,10 @@ shuffleCards();
 
 const screenClock = document.querySelector('.display');
 
-let counter;
+let countdown;
 
 const timer = function(){
-    clearInterval(counter)
+    clearInterval(countdown)
 
     const secondsToBeat = 61;
     displayTimer(secondsToBeat);
@@ -75,12 +92,13 @@ const timer = function(){
     const now = Date.now();
     const initialTimer = now + (secondsToBeat * 1000);
 
-    counter = setInterval(() => {
+    countdown = setInterval(() => {
         let secondsLeft = Math.round( (initialTimer - Date.now()) / 1000);
 
         if(secondsLeft < 0){
-            clearInterval(counter);
+            clearInterval(countdown);
             animateZeros();
+            if(correctPairs !== cards.length / 2) stopGame();
             return;
         }
 
@@ -99,6 +117,13 @@ const displayTimer = function(secondsLeft) {
 
 const animateZeros = function(){
     screenClock.classList.add('vibrate');
+};
+
+const stopGame = function() {
+    lockBoard = true;
+        
+    //popup with losing message + restart option or mode change (should unlock the board after)
+    alert('time out!');
 };
 
 timer();
