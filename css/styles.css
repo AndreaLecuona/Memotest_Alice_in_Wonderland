@@ -61,7 +61,7 @@ body h1 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 1.5rem auto 0.5rem auto;
+  margin: 2rem auto 1.5rem auto;
 }
 
 .wrapper {
@@ -70,7 +70,7 @@ body h1 {
   width: fit-content;
   height: 100vh;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
   background-color: #eae1d9;
 }
 
@@ -85,14 +85,14 @@ img {
   margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
 }
 
 .card {
-  width: 150px;
-  height: 170px;
+  width: 130px;
+  height: 150px;
   position: relative;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -157,6 +157,18 @@ img {
 }
 
 .card .face.back.teacup {
+  background-color: #f4cb56;
+}
+
+.card .face.back.croquet {
+  background-color: #e62255;
+}
+
+.card .face.back.teapot {
+  background-color: #3d2d4c;
+}
+
+.card .face.back.cupcake {
   background-color: #f4cb56;
 }
 

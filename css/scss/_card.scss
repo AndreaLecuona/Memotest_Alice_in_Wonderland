@@ -1,6 +1,6 @@
 .card{
-    width: 150px;
-    height: 170px;
+    width: 130px;
+    height: 150px;
     position: relative;
     transform-style: preserve-3d;
     .face{
@@ -42,6 +42,15 @@
                 background-color: $blue;
             }
             &.teacup{
+                background-color: $yellow;
+            }
+            &.croquet{
+                background-color: $pink;
+            }
+            &.teapot{
+                background-color: $purple;
+            }
+            &.cupcake{
                 background-color: $yellow;
             }
         }
