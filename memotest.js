@@ -58,4 +58,50 @@ const shuffleCards = function() {
 
 shuffleCards();
 
+
+
+//TIMER MODE
+
+const screenClock = document.querySelector('.display');
+
+let counter;
+
+const timer = function(){
+    clearInterval(counter)
+
+    const secondsToBeat = 61;
+    displayTimer(secondsToBeat);
+
+    const now = Date.now();
+    const initialTimer = now + (secondsToBeat * 1000);
+
+    counter = setInterval(() => {
+        let secondsLeft = Math.round( (initialTimer - Date.now()) / 1000);
+
+        if(secondsLeft < 0){
+            clearInterval(counter);
+            animateZeros();
+            return;
+        }
+
+        displayTimer(secondsLeft);
+    }, 1000);
+
+}
+
+const displayTimer = function(secondsLeft) {
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+
+    const format = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    screenClock.textContent = format;
+}
+
+const animateZeros = function(){
+    screenClock.classList.add('vibrate');
+};
+
+timer();
+
+
 cards.forEach(card => card.addEventListener('click', flipCards));

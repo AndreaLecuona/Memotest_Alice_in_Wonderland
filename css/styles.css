@@ -52,7 +52,7 @@ body {
   background-blend-mode: multiply;
 }
 
-body h1 {
+body h1, body h2 {
   font-size: 2.5rem;
   padding-bottom: 1rem;
   font-family: "Rammetto One", cursive;
@@ -76,6 +76,58 @@ body h1 {
 
 img {
   width: 80%;
+}
+
+.vibrate {
+  color: #e62255;
+  -webkit-animation: vibration 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          animation: vibration 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@-webkit-keyframes vibration {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(3px);
+            transform: translateX(3px);
+  }
+  50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  75% {
+    -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes vibration {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(3px);
+            transform: translateX(3px);
+  }
+  50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  75% {
+    -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 .card-container {
