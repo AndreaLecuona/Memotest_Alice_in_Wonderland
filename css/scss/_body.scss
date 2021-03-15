@@ -4,12 +4,12 @@ body{
     background-image: url(../css/img/hotel-wallpaper.png);
     background-color: $gray;
     background-blend-mode: multiply;
-    h1, h2{
+    h2 {
         font-size: 2.5rem;
         padding-bottom: 1rem;
         font-family: $titles;
         color: $purple;
-        background-color: $gray;
+        // background-color: $gray;
         width: fit-content;
         margin: 2rem auto 1.5rem auto;
     }

@@ -52,12 +52,11 @@ body {
   background-blend-mode: multiply;
 }
 
-body h1, body h2 {
+body h2 {
   font-size: 2.5rem;
   padding-bottom: 1rem;
   font-family: "Rammetto One", cursive;
   color: #3d2d4c;
-  background-color: #eae1d9;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -130,6 +129,165 @@ img {
   }
 }
 
+.intro {
+  width: 100vw;
+  height: 390px;
+  background-color: #3d2d4c;
+  position: absolute;
+  top: 15%;
+  left: 0;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.intro .text,
+.intro .text2 {
+  width: 100%;
+  margin: 3rem auto 1rem auto;
+}
+
+.intro .text .title,
+.intro .text2 .title {
+  line-height: 3rem;
+  font-size: 2.5rem;
+  font-family: "Rammetto One", cursive;
+  color: #fcfce3;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.intro .text .ornament,
+.intro .text2 .ornament {
+  width: 20%;
+}
+
+.intro .text .helper,
+.intro .text2 .helper {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: #fcfce3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0.5rem auto;
+}
+
+.intro .btn-wrapper,
+.intro .btn-wrapper2 {
+  width: 100%;
+}
+
+.intro .btn-wrapper .btn,
+.intro .btn-wrapper2 .btn {
+  width: 15%;
+  border: none;
+  background-color: #eae1d9;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0 1.5rem;
+  color: #3d2d4c;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.intro .btn-wrapper .btn.garden:hover,
+.intro .btn-wrapper2 .btn.garden:hover {
+  background-color: #44b0b1;
+  color: white;
+  letter-spacing: 4px;
+}
+
+.intro .btn-wrapper .btn.trial:hover,
+.intro .btn-wrapper2 .btn.trial:hover {
+  background-color: #e62255;
+  color: white;
+  letter-spacing: 4px;
+}
+
+.intro .btn-wrapper .btn.mad:hover,
+.intro .btn-wrapper2 .btn.mad:hover {
+  background-color: #f4cb56;
+  color: white;
+  letter-spacing: 4px;
+}
+
+.intro .btn-wrapper .back,
+.intro .btn-wrapper2 .back {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  color: white;
+  margin-right: 0.5rem;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.intro .btn-wrapper .back:hover,
+.intro .btn-wrapper2 .back:hover {
+  color: #8f869b;
+}
+
+.intro .btn-wrapper .play,
+.intro .btn-wrapper2 .play {
+  width: 110px;
+  height: 40px;
+  position: relative;
+}
+
+.intro .btn-wrapper .play:before,
+.intro .btn-wrapper2 .play:before {
+  content: "";
+  position: absolute;
+  right: -17px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #eae1d9;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+.intro .btn-wrapper .play:hover,
+.intro .btn-wrapper2 .play:hover {
+  letter-spacing: 4px;
+}
+
+.intro::before {
+  content: '';
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: -30px;
+  background-color: #eae1d99c;
+}
+
+.intro::after {
+  content: '';
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: -30px;
+  background-color: #eae1d99c;
+}
+
+.hide {
+  display: none;
+}
+
 .card-container {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -148,6 +306,7 @@ img {
   position: relative;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .card .face {
