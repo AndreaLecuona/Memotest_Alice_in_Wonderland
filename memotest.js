@@ -1,17 +1,14 @@
 const introModal = document.querySelector('.intro');
 
 const initialText = document.querySelector('.text');
-const initialTitle = document.querySelector('.text .title');
-const initialrules = document.querySelector('.text .helper');
-const btnModes = document.querySelectorAll('.btn-wrapper');
+const btnModes = document.querySelectorAll('.btn-wrapper button');
 
 const modeText = document.querySelector('.text2');
 const modeTitle = document.querySelector('.text2 .title');
 const moderules = document.querySelector('.text2 .helper');
-const btnOptions = document.querySelector('.btn-wrapper2');
 
-const backLink = document.querySelector('.back');
-const btnPlay = document.querySelector('.play');
+const winModal = document.querySelector('.win');
+const loseModal = document.querySelector('.lose');
 
 let lockBoard = true;
 
@@ -27,88 +24,76 @@ const modes = [
         currentMode: 'trial',
         title: 'Tarts trial',
         rules: 'Hurry up! You only got 1 minute to reveal all card pairs before the Queen of hearts declares you guilty',
-        color: '#e62255',
-        hasExtraOperation: true
+        color: '#e62255'
     },
     {
         currentMode: 'mad',
         title: 'Mad tea-party',
         rules: "You must revealed all card pairs to win, but be careful, every now and then cards like to change their place on the table, because you know... we're all mad here!",
         color: '#f4cb56',
-        // hasExtraOperation: true
     }
 ];
 
 
 
 // ------------------------------------------------------   GAME NAVIGATION + UI
+const showRules = function() {
+    let btnHoveredMode = this.dataset.mode;
+
+    let data = modes.find( modeObj => {
+        if(modeObj.currentMode === btnHoveredMode)
+        return modeObj
+    })
+
+    const {title, rules, color} = data;
+
+    initialText.classList.add('hide');
+    modeText.classList.remove('hide');
+    modeTitle.textContent = title;
+    modeTitle.style.color = color;
+    moderules.textContent = rules;
+};
+
+const hideRules = function() {
+    initialText.classList.remove('hide');
+    modeText.classList.add('hide');
+};
+
+
+
 const selectMode = function(e) {
     let selectedMode = e.target.dataset.mode;
-    let btnModeParent = e.target.parentNode;
-    const [gardenMode, trialMode, madMode] = modes;
 
     switch (selectedMode) {
         case 'garden':
-            launchMode(gardenMode, btnModeParent);
+            launchGame();
             break;
 
         case 'trial':
-            launchMode(trialMode, btnModeParent);
+            launchGame();
+            timer();
             break;
 
         case 'mad':
-            launchMode(madMode, btnModeParent);
+            launchGame();
+            alert('work in progress, not ready yet!');
             break;
             
         default:
             console.log('error in mode selection');
-            break;
+        break;
     }
 };
 
+btnModes.forEach(btn => btn.addEventListener('mouseenter', showRules));
+btnModes.forEach(btn => btn.addEventListener('mouseleave', hideRules));
 btnModes.forEach(btn => btn.addEventListener('click', selectMode));
 
 
-//takes you back to the main game mode selection
-const resetIntro = (btnModeParent) => {
-
-    initialText.classList.remove('hide');
-    btnModeParent.classList.remove('hide');
-
-    modeText.classList.add('hide');
-    btnOptions.classList.add('hide');
-
+// basic game functionality launching
+const launchGame = () => {
+    introModal.classList.add('hide');
     resetFullGame();
-    //NEEDS FIXING - if its trial mode, it should also hide the clock
-};
-
-
-
-// mode launching
-const launchMode = (mode, btnModeParent) => {
-
-    const {currentMode, title, rules, color, hasExtraOperation: hasExtra, startExtraOperation} = mode;
-
-    //update ui elements
-    modeTitle.textContent = title;
-    modeTitle.style.color = color;
-    moderules.textContent = rules;
-
-    initialText.classList.add('hide');
-    btnModeParent.classList.add('hide');
-    
-    modeText.classList.remove('hide');
-    btnOptions.classList.remove('hide');
-
-    //switch or play options
-    backLink.addEventListener('click', () => resetIntro(btnModeParent));
-
-    btnPlay.addEventListener('click', () => {
-        introModal.classList.add('hide');
-        resetFullGame();
-        hasExtra && startExtraOperation();
-    });
-
 };
 
 
@@ -117,17 +102,17 @@ const launchMode = (mode, btnModeParent) => {
 
 //winner scenario
 const victoryModal = function() {
- 
-    //NEEDS FIXING - update ui
-    // modeTitle.textContent = 'Well done! You win!';
-    // modeTitle.style.color = '#44b0b1';
-    // moderules.textContent = 'Do you want to play again?';
+    winModal.classList.remove('hide');
 
-    // introModal.classList.remove('hide');
+    setTimeout(() => {
+        screenClock.textContent = '';
+        resetFullGame();
+        winModal.classList.add('hide');
+        introModal.classList.remove('hide');
+    }, 3000);
 
-    //NEEDS FIXING - update logic
-    //if its trial mode, it should stop the clock
-    //make sure that replay button refreshes the actual game mode
+    //update logic
+    //if its mad mode it should stop the mixing
 };
 
 
@@ -203,6 +188,7 @@ const checkVictory = function(){
 
         lockBoard = true;
         victoryModal();
+        clearInterval(countdown);
 
     }, 1000);
 };
@@ -228,12 +214,13 @@ cards.forEach(card => card.addEventListener('click', flipCards));
 
 
 // ------------------------------------------------------   TRIAL MODE (TIMER)
-
 const screenClock = document.querySelector('.display');
 
 let countdown;
 
-modes[1].startExtraOperation = function timer(){
+
+const timer = function() {
+
     clearInterval(countdown)
 
     const secondsToBeat = 60;
@@ -254,8 +241,8 @@ modes[1].startExtraOperation = function timer(){
 
         displayTimer(secondsLeft);
     }, 1000);
+};
 
-}
 
 const displayTimer = function(secondsLeft) {
     const minutes = Math.floor(secondsLeft / 60);
@@ -269,9 +256,17 @@ const animateZeros = function(){
     screenClock.classList.add('vibrate');
 };
 
+
+//trial loser scenario
 const stopGame = function() {
     lockBoard = true;
-        
-    //popup with losing message + restart option or mode change (should unlock the board after)
-    alert('time out!');
+    loseModal.classList.remove('hide');
+
+    setTimeout(() => {
+        screenClock.textContent = '';
+        screenClock.classList.remove('vibrate');
+        resetFullGame();
+        loseModal.classList.add('hide');
+        introModal.classList.remove('hide');
+    }, 5000);
 };

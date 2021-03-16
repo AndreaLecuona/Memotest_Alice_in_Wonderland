@@ -8,25 +8,21 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     .text,
     .text2{
         width: 100%;
         margin: 3rem auto 1rem auto;
-        .title{
-            line-height: 3rem;
-            font-size: 2.5rem;
-            font-family: $titles;
-            color: rgb(252, 252, 227);
-            position: relative;
-            margin-bottom: 1rem;
-        }
         .ornament{
             width: 20%;
         }
         .helper{
+            width: 55%;
             font-family: $body;
             font-weight: $light;
             font-size: 1.2rem;
+            line-height: 1.7rem;
             color: rgb(252, 252, 227);
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -36,6 +32,7 @@
     .btn-wrapper,
     .btn-wrapper2{
         width: 100%;
+        margin-bottom: 40px;
         .btn{
             width: 15%;
             border: none;
@@ -122,6 +119,15 @@
         bottom: -30px;
         background-color: #eae1d99c;
     }
+}
+
+.title{
+    line-height: 3rem;
+    font-size: 2.5rem;
+    font-family: $titles;
+    color: rgb(252, 252, 227);
+    position: relative;
+    margin-bottom: 1rem;
 }
 
 .hide{

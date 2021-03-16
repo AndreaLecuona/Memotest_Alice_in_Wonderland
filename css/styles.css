@@ -50,13 +50,13 @@ body {
   background-image: url(../css/img/hotel-wallpaper.png);
   background-color: #eae1d9;
   background-blend-mode: multiply;
+  color: #3d2d4c;
 }
 
-body h2 {
+body .display {
   font-size: 2.5rem;
   padding-bottom: 1rem;
   font-family: "Rammetto One", cursive;
-  color: #3d2d4c;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -78,7 +78,6 @@ img {
 }
 
 .vibrate {
-  color: #e62255;
   -webkit-animation: vibration 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
           animation: vibration 0.15s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
@@ -144,22 +143,18 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .intro .text,
 .intro .text2 {
   width: 100%;
   margin: 3rem auto 1rem auto;
-}
-
-.intro .text .title,
-.intro .text2 .title {
-  line-height: 3rem;
-  font-size: 2.5rem;
-  font-family: "Rammetto One", cursive;
-  color: #fcfce3;
-  position: relative;
-  margin-bottom: 1rem;
 }
 
 .intro .text .ornament,
@@ -169,9 +164,11 @@ img {
 
 .intro .text .helper,
 .intro .text2 .helper {
+  width: 55%;
   font-family: "Roboto Slab", serif;
   font-weight: 300;
   font-size: 1.2rem;
+  line-height: 1.7rem;
   color: #fcfce3;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -181,6 +178,7 @@ img {
 .intro .btn-wrapper,
 .intro .btn-wrapper2 {
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .intro .btn-wrapper .btn,
@@ -284,6 +282,15 @@ img {
   background-color: #eae1d99c;
 }
 
+.title {
+  line-height: 3rem;
+  font-size: 2.5rem;
+  font-family: "Rammetto One", cursive;
+  color: #fcfce3;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
 .hide {
   display: none;
 }
@@ -342,6 +349,10 @@ img {
   background-blend-mode: multiply;
 }
 
+.card .face.front img {
+  width: 90%;
+}
+
 .card .face.back {
   -webkit-transform: perspective(500px) rotateY(180deg);
           transform: perspective(500px) rotateY(180deg);
@@ -396,5 +407,62 @@ img {
 .card.flip .face.back {
   -webkit-transform: perspective(500px) rotateY(360deg);
           transform: perspective(500px) rotateY(360deg);
+}
+
+.win,
+.lose {
+  width: 50vw;
+  height: 390px;
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  z-index: 5;
+  padding: 2rem;
+  background-color: #3d2d4c;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.win::before,
+.lose::before {
+  content: '';
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: -30px;
+  background-color: #eae1d99c;
+}
+
+.win::after,
+.lose::after {
+  content: '';
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: -30px;
+  background-color: #eae1d99c;
+}
+
+.lose {
+  background-color: #e62255;
+}
+
+.lose img {
+  width: 60%;
+}
+
+.hide {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */

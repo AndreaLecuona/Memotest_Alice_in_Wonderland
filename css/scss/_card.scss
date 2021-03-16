@@ -24,6 +24,9 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-blend-mode: multiply;
+            img{
+                width: 90%;
+            }
         }
         &.back{
             transform: perspective(500px) rotateY(180deg);
