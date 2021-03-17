@@ -19,17 +19,6 @@
         .ornament{
             width: 20%;
         }
-        .helper{
-            width: 55%;
-            font-family: $body;
-            font-weight: $light;
-            font-size: 1.2rem;
-            line-height: 1.7rem;
-            color: rgb(252, 252, 227);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin: 0.5rem auto;
-        }
     }
     .btn-wrapper{
         width: 100%;
@@ -112,6 +101,18 @@
     color: rgb(252, 252, 227);
     position: relative;
     margin: 1rem auto;
+}
+
+.helper{
+    width: 55%;
+    font-family: $body;
+    font-weight: $light;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    color: rgb(252, 252, 227);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0.5rem auto;
 }
 
 .hide{

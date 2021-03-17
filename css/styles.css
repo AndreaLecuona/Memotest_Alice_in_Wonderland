@@ -161,19 +161,6 @@ img {
   width: 20%;
 }
 
-.intro .text-welcome .helper,
-.intro .text-rules .helper {
-  width: 55%;
-  font-family: "Roboto Slab", serif;
-  font-weight: 300;
-  font-size: 1.2rem;
-  line-height: 1.7rem;
-  color: #fcfce3;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0.5rem auto;
-}
-
 .intro .btn-wrapper {
   width: 100%;
   margin-bottom: 45px;
@@ -239,6 +226,18 @@ img {
   color: #fcfce3;
   position: relative;
   margin: 1rem auto;
+}
+
+.helper {
+  width: 55%;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: #fcfce3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0.5rem auto;
 }
 
 .hide {
@@ -359,18 +358,76 @@ img {
           transform: perspective(500px) rotateY(360deg);
 }
 
+@-webkit-keyframes swapToRight {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes swapToRight {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes swapToLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(-120px);
+            transform: translateX(-120px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes swapToLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(-120px);
+            transform: translateX(-120px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
 .win,
-.lose,
-.mix {
-  width: 50vw;
+.lose {
+  width: 40vw;
   height: 390px;
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 30%;
   z-index: 5;
   padding: 2rem;
   background-color: #3d2d4c;
-  border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -385,34 +442,119 @@ img {
           align-items: center;
 }
 
+.win .title,
+.lose .title {
+  font-size: 2rem;
+}
+
+.win img,
+.lose img {
+  width: 70%;
+}
+
 .win::before,
-.lose::before,
-.mix::before {
+.lose::before {
   content: '';
   width: 100%;
-  height: 50px;
+  height: 40px;
   position: absolute;
-  top: -30px;
+  top: -20px;
   background-color: #eae1d99c;
+  border-radius: 10px 10px 0 0;
 }
 
 .win::after,
-.lose::after,
-.mix::after {
+.lose::after {
   content: '';
   width: 100%;
-  height: 50px;
+  height: 40px;
   position: absolute;
-  bottom: -30px;
+  bottom: -20px;
   background-color: #eae1d99c;
+  border-radius: 0 0 10px 10px;
 }
 
 .lose {
   background-color: #e62255;
 }
 
-.lose img {
-  width: 60%;
+.mix {
+  width: 30vw;
+  height: 290px;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  z-index: 5;
+  padding: 1rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mix .mix-animation {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mix .mix-animation img {
+  width: 20%;
+}
+
+.mix .mix-animation .card1 {
+  -webkit-animation: swapToRight 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+          animation: swapToRight 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+.mix .mix-animation .card2 {
+  -webkit-animation: swapToLeft 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+          animation: swapToLeft 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+.mix .helper {
+  color: #3d2d4c;
+  font-weight: 700;
+  margin: 0;
+  width: 100%;
+}
+
+.mix::before {
+  content: '';
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  top: -10px;
+  background-color: #f4ca56a9;
+  border-radius: 10px 10px 0 0;
+}
+
+.mix::after {
+  content: '';
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: -10px;
+  background-color: #f4ca56a9;
+  border-radius: 0 0 10px 10px;
 }
 
 .hide {

@@ -111,9 +111,6 @@ const victoryModal = function() {
         winModal.classList.add('hide');
         introModal.classList.remove('hide');
     }, 3000);
-
-    //update logic
-    //if its mad mode it should stop the mixing
 };
 
 
@@ -275,16 +272,6 @@ const stopGame = function() {
 
 
 // ------------------------------------------------------   MAD MODE (MIX)
-
-//contar cantidad de flips.
-//cuando llega a 10 flips hay que pausar el juego: 
-// - block tablero, 
-// - mostrar modal con animacion y frase, 
-// - ejecutar shuffle()
-//despues de esa pausa, hay que reanudar el juego:
-// - unblock tablero,
-// - resetear el contador de flips
-
 const madPopup = document.querySelector('.mix');
 
 let clickCounter = 0;
@@ -295,10 +282,8 @@ const madness = function() {
         return;
     }
 
-    console.log(clickCounter);
-
     if(clickCounter === 10){
-        console.log('10 clicks');
+        lockBoard = true;
         mixer();
     }
 
@@ -309,19 +294,17 @@ const madness = function() {
 
 
 const mixer = function(){
-    lockBoard = true;
-    //show popup
+    
     setTimeout(() => {
+        
         madPopup.classList.remove('hide');
         shuffleCards();
     
         setTimeout(() => {
             lockBoard = false;
             clickCounter = 0;
-            //hide popup
             madPopup.classList.add('hide');
-        }, 3000);
+        }, 4000);
 
     }, 1000);
-
-}
+};
