@@ -1,11 +1,11 @@
 const introModal = document.querySelector('.intro');
 
-const initialText = document.querySelector('.text');
+const initialText = document.querySelector('.text-welcome');
 const btnModes = document.querySelectorAll('.btn-wrapper button');
 
-const modeText = document.querySelector('.text2');
-const modeTitle = document.querySelector('.text2 .title');
-const moderules = document.querySelector('.text2 .helper');
+const modeText = document.querySelector('.text-rules');
+const modeTitle = document.querySelector('.text-rules .title');
+const moderules = document.querySelector('.text-rules .helper');
 
 const winModal = document.querySelector('.win');
 const loseModal = document.querySelector('.lose');
@@ -76,7 +76,8 @@ const selectMode = function(e) {
 
         case 'mad':
             launchGame();
-            alert('work in progress, not ready yet!');
+            madness();
+            // alert('work in progress, not ready yet!');
             break;
             
         default:
@@ -270,3 +271,57 @@ const stopGame = function() {
         introModal.classList.remove('hide');
     }, 5000);
 };
+
+
+
+// ------------------------------------------------------   MAD MODE (MIX)
+
+//contar cantidad de flips.
+//cuando llega a 10 flips hay que pausar el juego: 
+// - block tablero, 
+// - mostrar modal con animacion y frase, 
+// - ejecutar shuffle()
+//despues de esa pausa, hay que reanudar el juego:
+// - unblock tablero,
+// - resetear el contador de flips
+
+const madPopup = document.querySelector('.mix');
+
+let clickCounter = 0;
+
+const madness = function() {
+    if(correctPairs === cards.length / 2) {
+        cards.forEach(card => card.removeEventListener('click', madness));
+        return;
+    }
+
+    console.log(clickCounter);
+
+    if(clickCounter === 10){
+        console.log('10 clicks');
+        mixer();
+    }
+
+    clickCounter++;
+
+    cards.forEach(card => card.addEventListener('click', madness));
+};
+
+
+const mixer = function(){
+    lockBoard = true;
+    //show popup
+    setTimeout(() => {
+        madPopup.classList.remove('hide');
+        shuffleCards();
+    
+        setTimeout(() => {
+            lockBoard = false;
+            clickCounter = 0;
+            //hide popup
+            madPopup.classList.add('hide');
+        }, 3000);
+
+    }, 1000);
+
+}
