@@ -49,9 +49,11 @@ const showRules = function() {
 
     initialText.classList.add('hide');
     modeText.classList.remove('hide');
+
     modeTitle.textContent = title;
     modeTitle.style.color = color;
     moderules.textContent = rules;
+
 };
 
 const hideRules = function() {
@@ -77,7 +79,6 @@ const selectMode = function(e) {
         case 'mad':
             launchGame();
             madness();
-            // alert('work in progress, not ready yet!');
             break;
             
         default:
@@ -96,7 +97,6 @@ const launchGame = () => {
     introModal.classList.add('hide');
     resetFullGame();
 };
-
 
 
 // ------------------------------------------------------   BASIC GAME LOGIC
@@ -272,6 +272,7 @@ const stopGame = function() {
 
 
 // ------------------------------------------------------   MAD MODE (MIX)
+const cardContainer = document.querySelector('.card-container');
 const madPopup = document.querySelector('.mix');
 
 let clickCounter = 0;
@@ -294,17 +295,21 @@ const madness = function() {
 
 
 const mixer = function(){
-    
     setTimeout(() => {
+        cardContainer.classList.add('hide-and-change');
         
-        madPopup.classList.remove('hide');
-        shuffleCards();
-    
         setTimeout(() => {
-            lockBoard = false;
-            clickCounter = 0;
-            madPopup.classList.add('hide');
-        }, 4000);
+            madPopup.classList.remove('hide');
+            shuffleCards();
+        
+            setTimeout(() => {
+                lockBoard = false;
+                clickCounter = 0;
+                madPopup.classList.add('hide');
+                cardContainer.classList.remove('hide-and-change');
+            }, 4000);
+            
+        }, 500);
 
     }, 1000);
 };

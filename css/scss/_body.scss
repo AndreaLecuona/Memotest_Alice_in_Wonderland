@@ -11,6 +11,10 @@ body{
         width: fit-content;
         margin: 2rem auto 1.5rem auto;
     }
+    .hide{
+        display: none;
+    }
+
 }
 .wrapper{
     width: fit-content;
@@ -33,4 +37,14 @@ img{
     50%{ transform: translateX(0); }
     75%{ transform: translateX(-3px); }
     100%{ transform: translateX(0); }
+}
+
+.hide-and-change{
+    animation: hideAndChange 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes hideAndChange {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
