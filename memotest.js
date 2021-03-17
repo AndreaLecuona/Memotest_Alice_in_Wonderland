@@ -1,11 +1,11 @@
 const introModal = document.querySelector('.intro');
 
-const initialText = document.querySelector('.text');
+const initialText = document.querySelector('.text-welcome');
 const btnModes = document.querySelectorAll('.btn-wrapper button');
 
-const modeText = document.querySelector('.text2');
-const modeTitle = document.querySelector('.text2 .title');
-const moderules = document.querySelector('.text2 .helper');
+const modeText = document.querySelector('.text-rules');
+const modeTitle = document.querySelector('.text-rules .title');
+const moderules = document.querySelector('.text-rules .helper');
 
 const winModal = document.querySelector('.win');
 const loseModal = document.querySelector('.lose');
@@ -76,7 +76,8 @@ const selectMode = function(e) {
 
         case 'mad':
             launchGame();
-            alert('work in progress, not ready yet!');
+            madness();
+            // alert('work in progress, not ready yet!');
             break;
             
         default:
@@ -110,9 +111,6 @@ const victoryModal = function() {
         winModal.classList.add('hide');
         introModal.classList.remove('hide');
     }, 3000);
-
-    //update logic
-    //if its mad mode it should stop the mixing
 };
 
 
@@ -269,4 +267,44 @@ const stopGame = function() {
         loseModal.classList.add('hide');
         introModal.classList.remove('hide');
     }, 5000);
+};
+
+
+
+// ------------------------------------------------------   MAD MODE (MIX)
+const madPopup = document.querySelector('.mix');
+
+let clickCounter = 0;
+
+const madness = function() {
+    if(correctPairs === cards.length / 2) {
+        cards.forEach(card => card.removeEventListener('click', madness));
+        return;
+    }
+
+    if(clickCounter === 10){
+        lockBoard = true;
+        mixer();
+    }
+
+    clickCounter++;
+
+    cards.forEach(card => card.addEventListener('click', madness));
+};
+
+
+const mixer = function(){
+    
+    setTimeout(() => {
+        
+        madPopup.classList.remove('hide');
+        shuffleCards();
+    
+        setTimeout(() => {
+            lockBoard = false;
+            clickCounter = 0;
+            madPopup.classList.add('hide');
+        }, 4000);
+
+    }, 1000);
 };
