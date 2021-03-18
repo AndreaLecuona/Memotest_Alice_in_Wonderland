@@ -59,7 +59,7 @@ body .display {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 2rem auto 1.5rem auto;
+  margin: 0 auto 1.5rem auto;
 }
 
 body .hide {
@@ -74,6 +74,20 @@ body .hide {
   margin: 0 auto;
   padding: 0.5rem 1.5rem 0.5rem;
   background-color: #eae1d9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
 
 img {
@@ -277,7 +291,8 @@ img {
   width: 40vw;
   height: 390px;
   position: absolute;
-  top: 15%;
+  top: 50%;
+  margin-top: -195px;
   left: 30%;
   z-index: 5;
   padding: 2rem;
@@ -289,8 +304,9 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -348,7 +364,8 @@ img {
   width: 30vw;
   height: 290px;
   position: absolute;
-  top: 15%;
+  top: 50%;
+  margin-top: -145px;
   left: 35%;
   z-index: 5;
   padding: 1rem;
@@ -428,7 +445,8 @@ img {
   height: 390px;
   background-color: #3d2d4c;
   position: absolute;
-  top: 15%;
+  top: 50%;
+  margin-top: -195px;
   left: 0;
   z-index: 2;
   display: -webkit-box;
@@ -548,6 +566,64 @@ img {
   gap: 1rem;
 }
 
+.tag-container {
+  width: 40px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.tag-container .link {
+  background: #3d2d4c;
+  border: none;
+  border-radius: 5px;
+  padding: 0.35rem 1rem;
+  text-align: center;
+  color: #eae1d9;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.tag-container .tag {
+  width: 140px;
+  height: 30px;
+  position: relative;
+  border: none;
+  background-color: #3d2d4c;
+  border-radius: 0 5px 5px 0;
+  font-size: 0.8rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #eae1d9;
+  cursor: pointer;
+  margin-top: 2rem;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+.tag-container .tag:hover {
+  letter-spacing: 4px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.tag-container .tag::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-right: 15px solid #3d2d4c;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
 .card {
   width: 130px;
   height: 150px;
@@ -648,5 +724,179 @@ img {
 .card.flip .face.back {
   -webkit-transform: perspective(500px) rotateY(360deg);
           transform: perspective(500px) rotateY(360deg);
+}
+
+@media only screen and (max-width: 1024px) {
+  body img {
+    width: 70%;
+  }
+  body .display {
+    font-size: 2rem;
+  }
+  body .card {
+    width: 110px;
+    height: 130px;
+  }
+  body .win img {
+    width: 90%;
+  }
+  body .win .title {
+    font-size: 1.7rem;
+    line-height: 1.5;
+  }
+  body .lose img {
+    width: 85%;
+  }
+  body .lose .title {
+    line-height: 1.3;
+  }
+  body .mix .mix-animation img {
+    width: 25%;
+  }
+  body .mix .helper {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  body img {
+    width: 70%;
+  }
+  body .win,
+  body .lose {
+    width: 50vw;
+    left: 50%;
+    margin-left: -25vw;
+  }
+  body .win .title,
+  body .lose .title {
+    font-size: 1.5rem;
+  }
+  body .mix {
+    height: 230px;
+    margin-top: -115px;
+  }
+  body .mix .helper {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  body .display {
+    font-size: 2rem;
+  }
+  body .card-container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  body .card-container .card {
+    width: 110px;
+    height: 130px;
+  }
+  body .tag-container .tag {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  body .win,
+  body .lose {
+    height: 460px;
+    top: 50%;
+    margin-top: -230px;
+    width: 85vw;
+    left: 50%;
+    margin-left: -42.5vw;
+  }
+  body .win .title,
+  body .lose .title {
+    font-size: 2rem;
+  }
+  body .mix {
+    width: 60vw;
+    height: 230px;
+    margin-top: -115px;
+    left: 50%;
+    margin-left: -30vw;
+  }
+  body .intro {
+    height: 460px;
+    top: 50%;
+    margin-top: -230px;
+  }
+  body .intro .text-welcome {
+    width: 95%;
+  }
+  body .intro .text-welcome .title {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  body .intro .text-welcome .ornament {
+    width: 40%;
+  }
+  body .intro .text-welcome .helper {
+    font-size: 1rem;
+  }
+  body .intro .btn-wrapper .btn {
+    width: 50%;
+    margin: 0.5rem;
+  }
+  body img {
+    width: 70%;
+  }
+  body .display {
+    font-size: 2rem;
+  }
+  body .card-container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  body .card-container .card {
+    width: 80px;
+    height: 100px;
+  }
+  body .card-container .card:nth-child(n+13) {
+    display: none;
+  }
+  body .card-container .card .face img {
+    -webkit-transform: perspective(500px) translateZ(35px);
+            transform: perspective(500px) translateZ(35px);
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  body .mix .helper {
+    font-size: 0.7rem;
+  }
+  body .intro {
+    height: 490px;
+    top: 50%;
+    margin-top: -245px;
+  }
+  body .intro .text-welcome {
+    width: 95%;
+  }
+  body .intro .text-welcome .title {
+    margin-top: 0;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  body .intro .text-welcome .ornament {
+    width: 50%;
+  }
+  body .intro .text-welcome .helper {
+    width: 90%;
+    font-size: 1rem;
+  }
+  body .intro .btn-wrapper .btn {
+    width: 50%;
+    margin: 0.5rem;
+  }
+  body .intro .btn-wrapper .btn:hover {
+    width: 60%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

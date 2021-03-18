@@ -7,6 +7,9 @@ const modeText = document.querySelector('.text-rules');
 const modeTitle = document.querySelector('.text-rules .title');
 const moderules = document.querySelector('.text-rules .helper');
 
+const btnInfo = document.querySelector('.info');
+const btnQuit = document.querySelector('.quit');
+
 const winModal = document.querySelector('.win');
 const loseModal = document.querySelector('.lose');
 
@@ -39,6 +42,12 @@ const modes = [
 // ------------------------------------------------------   GAME NAVIGATION + UI
 const showRules = function() {
     let btnHoveredMode = this.dataset.mode;
+    let btnHoveredText = this.textContent;
+    
+    this.textContent = 'Play me';
+    setTimeout(() => {
+        this.textContent = btnHoveredText;
+    }, 2000);
 
     let data = modes.find( modeObj => {
         if(modeObj.currentMode === btnHoveredMode)
@@ -57,10 +66,11 @@ const showRules = function() {
 };
 
 const hideRules = function() {
+    let btnHoveredText = this.textContent;
+
     initialText.classList.remove('hide');
     modeText.classList.add('hide');
 };
-
 
 
 const selectMode = function(e) {
@@ -91,10 +101,17 @@ btnModes.forEach(btn => btn.addEventListener('mouseenter', showRules));
 btnModes.forEach(btn => btn.addEventListener('mouseleave', hideRules));
 btnModes.forEach(btn => btn.addEventListener('click', selectMode));
 
+if(window.innerWidth <= 768){
+    btnModes.forEach(btn => btn.removeEventListener('mouseenter', showRules));
+    btnModes.forEach(btn => btn.removeEventListener('mouseleave', hideRules));
+}
+
 
 // basic game functionality launching
 const launchGame = () => {
     introModal.classList.add('hide');
+    btnQuit.classList.remove('hide');
+    lockBoard = false;
     resetFullGame();
 };
 
@@ -107,11 +124,31 @@ const victoryModal = function() {
 
     setTimeout(() => {
         screenClock.textContent = '';
+        screenClock.classList.add('hide');
         resetFullGame();
         winModal.classList.add('hide');
         introModal.classList.remove('hide');
+        btnQuit.classList.add('hide');
     }, 3000);
 };
+
+
+//quit scenario
+const quitGame = function() {
+    lockBoard = true;
+    resetFullGame();
+    introModal.classList.remove('hide');
+    btnQuit.classList.add('hide');
+
+    clearInterval(countdown);
+    screenClock.textContent = '';
+    screenClock.classList.add('hide');
+
+    cards.forEach(card => card.removeEventListener('click', madness));
+    clickCounter = 0;
+};
+
+btnQuit.addEventListener('click', quitGame);
 
 
 // MAIN LOGIC
@@ -119,7 +156,6 @@ const victoryModal = function() {
 const cards = document.querySelectorAll('.card');
 
 let alreadyFlippedSomething = false;
-lockBoard = false;
 let firstCard;
 let secondCard;
 
@@ -243,6 +279,7 @@ const timer = function() {
 
 
 const displayTimer = function(secondsLeft) {
+    screenClock.classList.remove('hide');
     const minutes = Math.floor(secondsLeft / 60);
     const seconds = secondsLeft % 60;
 
@@ -262,10 +299,12 @@ const stopGame = function() {
 
     setTimeout(() => {
         screenClock.textContent = '';
+        screenClock.classList.add('hide');
         screenClock.classList.remove('vibrate');
         resetFullGame();
         loseModal.classList.add('hide');
         introModal.classList.remove('hide');
+        btnQuit.classList.add('hide');
     }, 5000);
 };
 

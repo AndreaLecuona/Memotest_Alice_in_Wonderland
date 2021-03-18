@@ -25,7 +25,9 @@
     width: 40vw;
     height: 390px;
     position: absolute;
-    top: 15%;
+    // top: 15%;
+    top: 50%;
+    margin-top: -195px;
     left: 30%;
     z-index: 5;
 
@@ -34,7 +36,7 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
     .title{
@@ -81,7 +83,9 @@
     width: 30vw;
     height: 290px;
     position: absolute;
-    top: 15%;
+    // top: 15%;
+    top: 50%;
+    margin-top: -145px;
     left: 35%;
     z-index: 5;
     

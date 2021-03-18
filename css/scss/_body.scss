@@ -9,7 +9,7 @@ body{
         font-size: 2.5rem;
         font-family: $titles;
         width: fit-content;
-        margin: 2rem auto 1.5rem auto;
+        margin: 0 auto 1.5rem auto;
     }
     .hide{
         display: none;
@@ -22,6 +22,11 @@ body{
     margin: 0 auto;
     padding: 0.5rem 1.5rem 0.5rem ;
     background-color: $gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 img{
     width: 80%;
