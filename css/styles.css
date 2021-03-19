@@ -360,8 +360,8 @@ body .hide {
 }
 
 .card-container.hide-and-change {
-  -webkit-animation: hideAndChange 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-          animation: hideAndChange 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-animation: hideAndChange 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          animation: hideAndChange 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .card {

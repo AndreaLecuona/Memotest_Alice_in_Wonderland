@@ -1,13 +1,13 @@
 const introModal = document.querySelector('.intro');
 
 const initialText = document.querySelector('.text-welcome');
-const btnModes = document.querySelectorAll('.btn-wrapper button');
 
 const modeText = document.querySelector('.text-rules');
 const modeTitle = document.querySelector('.text-rules .title');
 const moderules = document.querySelector('.text-rules .helper');
 
-const btnInfo = document.querySelector('.info');
+const btnModes = document.querySelectorAll('.btn-wrapper button');
+
 const btnQuit = document.querySelector('.quit');
 
 const winModal = document.querySelector('.win');
@@ -38,39 +38,37 @@ const modes = [
 ];
 
 
-
 // ------------------------------------------------------   GAME NAVIGATION + UI
 const showRules = function(e) {
     let btnHoveredText = e.target.textContent;
-    
+
     e.target.textContent = 'Play me';
+
     setTimeout(() => {
         e.target.textContent = btnHoveredText;
     }, 2000);
 
     let btnHoveredMode = this.dataset.mode;
-    
+
     let data = modes.find( modeObj => {
         if(modeObj.currentMode === btnHoveredMode)
         return modeObj
-    })
+    });
 
     const {title, rules, color} = data;
-
-    initialText.classList.add('hide');
-    modeText.classList.remove('hide');
 
     modeTitle.textContent = title;
     modeTitle.style.color = color;
     moderules.textContent = rules;
 
+    hide(initialText);
+    display(modeText);
 };
 
 const hideRules = function() {
-    initialText.classList.remove('hide');
-    modeText.classList.add('hide');
+    display(initialText);
+    hide(modeText);
 };
-
 
 const selectMode = function(e) {
     let selectedMode = e.target.dataset.mode;
@@ -103,48 +101,43 @@ btnModes.forEach(btn => btn.addEventListener('click', selectMode));
 if(window.innerWidth <= 768){
     btnModes.forEach(btn => btn.removeEventListener('mouseenter', showRules));
     btnModes.forEach(btn => btn.removeEventListener('mouseleave', hideRules));
-}
+};
 
+const hide = (domElement) => {
+    return domElement.classList.add('hide');
+};
 
-// basic game functionality launching
-const launchGame = () => {
-    introModal.classList.add('hide');
-    btnQuit.classList.remove('hide');
-    lockBoard = false;
-    resetFullGame();
+const display = (domElement) => {
+    return domElement.classList.remove('hide');
 };
 
 
 // ------------------------------------------------------   BASIC GAME LOGIC
 
+// basic game functionality launching
+const launchGame = () => {
+    resetFullGame();
+    hide(introModal);
+    display(btnQuit);
+    lockBoard = false;
+};
+
+
 //winner scenario
 const victoryModal = function() {
-    winModal.classList.remove('hide');
+    display(winModal);
 
     setTimeout(() => {
-        screenClock.textContent = '';
-        screenClock.classList.add('hide');
+        hide(winModal);
         resetFullGame();
-        winModal.classList.add('hide');
-        introModal.classList.remove('hide');
-        btnQuit.classList.add('hide');
     }, 3000);
 };
 
 
 //quit scenario
 const quitGame = function() {
-    lockBoard = true;
     resetFullGame();
-    introModal.classList.remove('hide');
-    btnQuit.classList.add('hide');
-
-    clearInterval(countdown);
-    screenClock.textContent = '';
-    screenClock.classList.add('hide');
-
-    cards.forEach(card => card.removeEventListener('click', madness));
-    clickCounter = 0;
+    lockBoard = true;
 };
 
 btnQuit.addEventListener('click', quitGame);
@@ -212,7 +205,6 @@ const shuffleCards = function() {
         card.style.order = randomIndex;
     });
 };
-shuffleCards();
 
 
 const checkVictory = function(){
@@ -234,23 +226,31 @@ const resetGamingVariables = function() {
 
 
 const resetFullGame = function(){
+    //reset basic logic
     resetGamingVariables();
     correctPairs = 0;
     cards.forEach(card => card.classList.remove('flip'));
     shuffleCards();
     cards.forEach(card => card.addEventListener('click', flipCards));
+
+    //reset trial mode
+    resetClock();
+    hide(btnQuit);
+    display(introModal);
+
+    //reset mad mode
+    cards.forEach(card => card.removeEventListener('click', madness));
+    clickCounter = 0;
 };
 
 
 cards.forEach(card => card.addEventListener('click', flipCards));
 
 
-
 // ------------------------------------------------------   TRIAL MODE (TIMER)
 const screenClock = document.querySelector('.display');
 
 let countdown;
-
 
 const timer = function() {
 
@@ -278,7 +278,7 @@ const timer = function() {
 
 
 const displayTimer = function(secondsLeft) {
-    screenClock.classList.remove('hide');
+    display(screenClock);
     const minutes = Math.floor(secondsLeft / 60);
     const seconds = secondsLeft % 60;
 
@@ -290,23 +290,24 @@ const animateZeros = function(){
     screenClock.classList.add('vibrate');
 };
 
+const resetClock = function() {
+    clearInterval(countdown);
+    screenClock.textContent = '';
+    hide(screenClock);
+};
+
 
 //trial loser scenario
 const stopGame = function() {
     lockBoard = true;
-    loseModal.classList.remove('hide');
+    display(loseModal);
 
     setTimeout(() => {
-        screenClock.textContent = '';
-        screenClock.classList.add('hide');
         screenClock.classList.remove('vibrate');
+        hide(loseModal);
         resetFullGame();
-        loseModal.classList.add('hide');
-        introModal.classList.remove('hide');
-        btnQuit.classList.add('hide');
     }, 5000);
 };
-
 
 
 // ------------------------------------------------------   MAD MODE (MIX)
@@ -337,17 +338,17 @@ const mixer = function(){
         cardContainer.classList.add('hide-and-change');
         
         setTimeout(() => {
-            madPopup.classList.remove('hide');
+            display(madPopup);
             shuffleCards();
         
             setTimeout(() => {
                 lockBoard = false;
                 clickCounter = 0;
-                madPopup.classList.add('hide');
+                hide(madPopup);
                 cardContainer.classList.remove('hide-and-change');
             }, 4000);
             
-        }, 500);
+        }, 1000);
 
     }, 1000);
 };
