@@ -20,7 +20,7 @@
         transition: 0.7s ease-in-out;
         &.front{
             // background-image: url(../css/img/hotel-wallpaper.png);
-            background-color: rgb(252, 252, 227);
+            background-color: $white;
             background-size: cover;
             background-repeat: no-repeat;
             background-blend-mode: multiply;

@@ -1,10 +1,10 @@
 @import './scss/reset';
-@import './scss/variables';
+@import './scss/variables-and-mixins';
 
 @import './scss/body';
-@import './scss/result-modal';
-@import './scss/info-modal';
+@import './scss/intro-info-modal';
 @import './scss/card-container';
 @import './scss/card';
+@import './scss/outcome-and-shuffle-modals';
 
 @import './scss/mediaqueries';

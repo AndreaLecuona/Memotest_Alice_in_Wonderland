@@ -1,0 +1,105 @@
+//FONTS
+$titles: 'Rammetto One', cursive;
+$body: 'Roboto Slab', serif;
+$regular: 400;
+$bold: 700;
+$light: 300;
+
+
+//COLORS
+//Primary
+$purple: #3d2d4c;
+$pink: #e62255;
+$blue: #44b0b1;
+$yellow: #f4cb56;
+$gray: #eae1d9;
+//Secondary
+$purple-gray: #eae1d99c;
+$yellow-gray: #f4ca56a9;
+$white: #fcfce3;
+
+
+//TEXT STYLES
+@mixin mainTitle {
+    line-height: 3rem;
+    font-size: 2.5rem;
+    font-family: $titles;
+    color: $white;
+    margin: 1rem auto;
+}
+
+@mixin subtitle {
+    width: 55%;
+    font-family: $body;
+    font-weight: $light;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    color: $white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0.5rem auto;
+}
+
+
+//CENTER CONTENT
+//center div
+@mixin centerPosition($width, $height) {
+    height: $height;
+    top: 50%;
+    margin-top: -($height / 2);
+    width: $width;
+    left: 50%;
+    margin-left: -($width / 2);
+}
+
+//center div content with flexbox
+@mixin centerFlexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+//BUTTONS
+@mixin primaryBtn {
+    width: 20%;
+    border: none;
+    background-color: $gray;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: $body;
+    font-weight: $bold;
+    letter-spacing: 2px;
+    margin: 0 1rem;
+    color: $purple;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    &:hover{
+        color: white;
+        letter-spacing: 4px;
+    }
+}
+
+
+//MISC
+@mixin topBar($height, $top, $color) {
+    content: '';
+    width: 100%;
+    height: $height;
+    position: absolute;
+    top: $top;
+    background-color: $color;
+    border-radius: 10px 10px 0 0;
+}
+
+@mixin bottomBar($height, $bottom, $color) {
+    content: '';
+    width: 100%;
+    height: $height;
+    position: absolute;
+    bottom: $bottom;
+    background-color: $color;
+    border-radius: 0 0 10px 10px;
+}

@@ -22,50 +22,26 @@
 
 .win,
 .lose{
-    width: 40vw;
-    height: 390px;
     position: absolute;
-    // top: 15%;
-    top: 50%;
-    margin-top: -195px;
-    left: 30%;
+    @include centerPosition(40vw, 390px);
     z-index: 5;
-
+    @include centerFlexbox;
     padding: 2rem;
     background-color: $purple;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     .title{
+        @include mainTitle;
         font-size: 2rem;
     }
     img{
         width: 70%;
     }
-
     &::before{
-        content: '';
-        width: 100%;
-        height: 40px;
-        position: absolute;
-        top: -20px;
-        background-color: #eae1d99c;
-        border-radius: 10px 10px 0 0;
+        @include topBar(40px, -20px, $purple-gray);
     }
     &::after{
-        content: '';
-        width: 100%;
-        height: 40px;
-        position: absolute;
-        bottom: -20px;
-        background-color: #eae1d99c;
-        border-radius: 0 0 10px 10px;
+        @include bottomBar(40px, -20px, $purple-gray);
     }
 }
-
 .win{
     .grow-animation{
         animation: grow 3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -79,24 +55,14 @@
     }
 }
 
+
 .mix{
-    width: 30vw;
-    height: 290px;
     position: absolute;
-    // top: 15%;
-    top: 50%;
-    margin-top: -145px;
-    left: 35%;
+    @include centerPosition(30vw, 290px);
     z-index: 5;
-    
+    @include centerFlexbox;
     padding: 1rem;
     background-color: white;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     .mix-animation{
         width: 100%;
         margin: 0 auto;
@@ -113,30 +79,17 @@
             animation: swapToLeft 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
         }
     }
-
     .helper{
+        @include subtitle;
         color: $purple;
         font-weight: $bold;
         margin: 0;
         width: 100%;
     }
-
     &::before{
-        content: '';
-        width: 100%;
-        height: 20px;
-        position: absolute;
-        top: -10px;
-        background-color: #f4ca56a9;
-        border-radius: 10px 10px 0 0;
+        @include topBar(20px, -10px, $yellow-gray);
     }
     &::after{
-        content: '';
-        width: 100%;
-        height: 20px;
-        position: absolute;
-        bottom: -10px;
-        background-color: #f4ca56a9;
-        border-radius: 0 0 10px 10px;
+        @include bottomBar(20px, -10px, $yellow-gray);
     }
 }

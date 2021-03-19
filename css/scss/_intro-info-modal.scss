@@ -1,0 +1,50 @@
+.intro{
+    position: absolute;
+    @include centerPosition(100vw, 390px);
+    z-index: 2;
+    @include centerFlexbox;
+    justify-content: space-between;
+    background-color: $purple;
+    .text-welcome,
+    .text-rules{
+        width: 100%;
+        margin: 2.5rem auto 1rem auto;
+        .title{
+            @include mainTitle;
+        }
+        .ornament{
+            width: 20%;
+        }
+        .helper{
+            @include subtitle;
+        }
+    }
+    .btn-wrapper{
+        width: 100%;
+        margin-bottom: 45px;
+        .btn{
+            @include primaryBtn;
+            &.garden{
+                &:hover{
+                    background-color: $blue;
+                }
+            }
+            &.trial{
+                &:hover{
+                    background-color: $pink;
+                }
+            }
+            &.mad{
+                &:hover{
+                    background-color: $yellow;
+                }
+            }
+        }
+    }
+    &::before{
+        @include topBar(50px, -30px, $purple-gray);
+    }
+    &::after{
+        @include bottomBar(50px, -30px, $purple-gray);
+    }
+}

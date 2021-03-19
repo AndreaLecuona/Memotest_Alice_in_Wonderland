@@ -32,7 +32,7 @@ const modes = [
     {
         currentMode: 'mad',
         title: 'Mad tea-party',
-        rules: "You must revealed all card pairs to win, but be careful, every now and then cards like to change their place on the table, because you know... we're all mad here!",
+        rules: "You must reveal all card pairs to win, but be careful, every now and then cards like to change their place on the table, because you know... we're all mad here!",
         color: '#f4cb56',
     }
 ];
@@ -40,15 +40,16 @@ const modes = [
 
 
 // ------------------------------------------------------   GAME NAVIGATION + UI
-const showRules = function() {
-    let btnHoveredMode = this.dataset.mode;
-    let btnHoveredText = this.textContent;
+const showRules = function(e) {
+    let btnHoveredText = e.target.textContent;
     
-    this.textContent = 'Play me';
+    e.target.textContent = 'Play me';
     setTimeout(() => {
-        this.textContent = btnHoveredText;
+        e.target.textContent = btnHoveredText;
     }, 2000);
 
+    let btnHoveredMode = this.dataset.mode;
+    
     let data = modes.find( modeObj => {
         if(modeObj.currentMode === btnHoveredMode)
         return modeObj
@@ -66,8 +67,6 @@ const showRules = function() {
 };
 
 const hideRules = function() {
-    let btnHoveredText = this.textContent;
-
     initialText.classList.remove('hide');
     modeText.classList.add('hide');
 };

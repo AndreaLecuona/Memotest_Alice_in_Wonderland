@@ -1,41 +1,3 @@
-body{
-    height: 100vh;
-    text-align: center;
-    background-image: url(../css/img/hotel-wallpaper.png);
-    background-color: $gray;
-    background-blend-mode: multiply;
-    color: $purple;
-    .display {
-        font-size: 2.5rem;
-        font-family: $titles;
-        width: fit-content;
-        margin: 0 auto 1.5rem auto;
-    }
-    .hide{
-        display: none;
-    }
-
-}
-.wrapper{
-    width: fit-content;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 0.5rem 1.5rem 0.5rem ;
-    background-color: $gray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-img{
-    width: 80%;
-}
-
-.vibrate {
-    animation: vibration 0.15s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
-}
-
 @keyframes vibration {
     0%{ transform: translateX(0); }
     25%{ transform: translateX(3px); }
@@ -44,12 +6,88 @@ img{
     100%{ transform: translateX(0); }
 }
 
-.hide-and-change{
-    animation: hideAndChange 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-@keyframes hideAndChange {
-    0% {opacity: 1;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
+body{
+    height: 100vh;
+    text-align: center;
+    background-image: url(../css/img/hotel-wallpaper.png);
+    background-color: $gray;
+    background-blend-mode: multiply;
+    color: $purple;
+    .tag-container{
+        width: 40px;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        z-index: 2;
+        .link{
+            background: $purple;
+            border: none;
+            border-radius: 5px;
+            padding: 0.35rem 1rem;
+            text-align: center;
+            color: $gray;
+            font-weight: $bold;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        .tag{
+            width: 140px;
+            height: 30px;
+            position: relative;
+            border: none;
+            background-color: $purple;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.8rem;
+            font-family: $body;
+            font-weight: $bold;
+            letter-spacing: 2px;
+            color: $gray;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.5s ease-in-out;
+            transform: scale(0.7);
+            &:hover{
+                letter-spacing: 4px;
+                transform: scale(1);
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                left: -15px;
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border-right: 15px solid $purple;
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+            }
+        }
+    }
+    .wrapper{
+        width: fit-content;
+        height: 100vh;
+        margin: 0 auto;
+        padding: 0.5rem 1.5rem 0.5rem ;
+        background-color: $gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .display {
+            font-size: 2.5rem;
+            font-family: $titles;
+            width: fit-content;
+            margin: 0 auto 1.5rem auto;
+            &.vibrate {
+                animation: vibration 0.15s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+            }
+        }
+    }
+    img{
+        width: 80%;
+    }
+    .hide{
+        display: none;
+    }
 }
