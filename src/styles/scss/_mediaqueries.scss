@@ -45,11 +45,11 @@
 @media only screen and (max-width: 768px){
     body{
         width: fit-content;
-        .wrapper{
-            padding: 0;
-        }
         img{
             width: 70%;
+        }
+        .intro{
+            width: 103%;
         }
         .win,
         .lose{
@@ -87,7 +87,7 @@
     }
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 760px){
     body{
         position: relative;
         .warning{
