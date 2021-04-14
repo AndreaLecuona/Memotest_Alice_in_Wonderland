@@ -1,5 +1,7 @@
+import '../public/index.html';
 import '@styles/main.css';
 import '@styles/main.scss';
+
 
 
 const introModal = document.querySelector('.intro');
