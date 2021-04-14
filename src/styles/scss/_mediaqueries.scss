@@ -140,9 +140,9 @@
             .card{
                 width: 80px;
                 height: 100px;
-                &:nth-child(n+13){
-                    display: none;
-                }
+                // &:nth-child(n+13){
+                //     display: none;
+                // }
                 .face{
                     img{
                         transform: perspective(500px) translateZ(35px);
