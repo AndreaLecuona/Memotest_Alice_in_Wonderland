@@ -44,6 +44,10 @@
 
 @media only screen and (max-width: 768px){
     body{
+        width: fit-content;
+        .wrapper{
+            padding: 0;
+        }
         img{
             width: 70%;
         }
@@ -68,7 +72,7 @@
             font-size: 2rem;
         }
         .card-container{
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 1rem;
             .card{
                 width: 110px;
@@ -84,110 +88,139 @@
 }
 
 @media only screen and (max-width: 576px){
-    body{ 
-        .win,
-        .lose{
-            height: 460px;
-            top: 50%;
-            margin-top: -230px;
-            width: 85vw;
-            left: 50%;
-            margin-left: -42.5vw;
-            .title{
-                font-size: 2rem;
+    body{
+        position: relative;
+        .warning{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            display: block;
+            background-color: $purple;
+            .helper{
+                @include subtitle;
+                margin: 5rem auto 0.5rem auto;
             }
-        }
-        .mix{
-            width: 60vw;
-            height: 230px;
-            margin-top: -115px;
-            left: 50%;
-            margin-left: -30vw;
-        }
-        .intro{
-            height: 460px;
-            top: 50%;
-            margin-top: -230px;
-            .text-welcome{
-                width: 95%;
-                .title{
-                    font-size: 1.4rem;
-                    line-height: 1.5;
-                }
-                .ornament{
-                    width: 40%;
-                }
-                .helper{
-                    font-size: 1rem;
-                }
-            }
-            .btn-wrapper{
-                .btn{
-                    width: 50%;
-                    margin: 0.5rem;
-                }
-            }
-        }
-        img{
-            width: 70%;
-        }
-        .display{
-            font-size: 2rem;
         }
         .card-container{
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
             .card{
-                width: 80px;
-                height: 100px;
-                // &:nth-child(n+13){
-                //     display: none;
-                // }
-                .face{
-                    img{
-                        transform: perspective(500px) translateZ(35px);
-                    }
-                }
+                width: 60px;
+                height: 80px;
             }
         }
     }
 }
 
-@media only screen and (max-width: 375px){
-    body{
-        .mix{
-            .helper{
-                font-size: 0.7rem;
-            }
-        }
-        .intro{
-            height: 490px;
-            top: 50%;
-            margin-top: -245px;
-            .text-welcome{
-                width: 95%;
-                .title{
-                    margin-top: 0;
-                    font-size: 1.5rem;
-                    line-height: 1.5;
-                }
-                .ornament{
-                    width: 50%;
-                }
-                .helper{
-                    width: 90%;
-                    font-size: 1rem;
-                }
-            }
-            .btn-wrapper{
-                .btn{
-                    width: 50%;
-                    margin: 0.5rem;
-                    &:hover{
-                        width: 60%;
-                    }
-                }
-            }
-        }
-    }
-}
+
+// @media only screen and (max-width: 576px){
+//     body{ 
+//         .win,
+//         .lose{
+//             height: 460px;
+//             top: 50%;
+//             margin-top: -230px;
+//             width: 85vw;
+//             left: 50%;
+//             margin-left: -42.5vw;
+//             .title{
+//                 font-size: 2rem;
+//             }
+//         }
+//         .mix{
+//             width: 60vw;
+//             height: 230px;
+//             margin-top: -115px;
+//             left: 50%;
+//             margin-left: -30vw;
+//         }
+//         .intro{
+//             height: 460px;
+//             top: 50%;
+//             margin-top: -230px;
+//             .text-welcome{
+//                 width: 95%;
+//                 .title{
+//                     font-size: 1.4rem;
+//                     line-height: 1.5;
+//                 }
+//                 .ornament{
+//                     width: 40%;
+//                 }
+//                 .helper{
+//                     font-size: 1rem;
+//                 }
+//             }
+//             .btn-wrapper{
+//                 .btn{
+//                     width: 50%;
+//                     margin: 0.5rem;
+//                 }
+//             }
+//         }
+//         img{
+//             width: 70%;
+//         }
+//         .display{
+//             font-size: 2rem;
+//         }
+//         .card-container{
+//             grid-template-columns: repeat(4, 1fr);
+//             gap: 1rem;
+//             justify-content: end;
+//             .card{
+//                 width: 70px;
+//                 height: 90px;
+//                 &:nth-child(n+13){
+//                     display: block;
+//                 }
+//                 .face{
+//                     img{
+//                         transform: perspective(500px) translateZ(35px);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media only screen and (max-width: 375px){
+//     body{
+//         .mix{
+//             .helper{
+//                 font-size: 0.7rem;
+//             }
+//         }
+//         .intro{
+//             height: 490px;
+//             top: 50%;
+//             margin-top: -245px;
+//             .text-welcome{
+//                 width: 95%;
+//                 .title{
+//                     margin-top: 0;
+//                     font-size: 1.5rem;
+//                     line-height: 1.5;
+//                 }
+//                 .ornament{
+//                     width: 50%;
+//                 }
+//                 .helper{
+//                     width: 90%;
+//                     font-size: 1rem;
+//                 }
+//             }
+//             .btn-wrapper{
+//                 .btn{
+//                     width: 50%;
+//                     margin: 0.5rem;
+//                     &:hover{
+//                         width: 60%;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
