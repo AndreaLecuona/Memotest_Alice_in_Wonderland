@@ -1,3 +1,7 @@
+import '@styles/main.css';
+import '@styles/main.scss';
+
+
 const introModal = document.querySelector('.intro');
 
 const initialText = document.querySelector('.text-welcome');

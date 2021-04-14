@@ -44,6 +44,38 @@ table {
   border-spacing: 0;
 }
 
+/* rammetto-one-regular - latin */
+@font-face {
+  font-family: 'Rammetto One';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/rammetto-one-v9-latin-regular.woff2") format("woff2"), url("../assets/fonts/rammetto-one-v9-latin-regular.woff") format("woff");
+}
+
+/* roboto-slab-300 - latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../assets/fonts/roboto-slab-v13-latin-300.woff2") format("woff2"), url("../assets/fonts/roboto-slab-v13-latin-300.woff") format("woff");
+}
+
+/* roboto-slab-regular - latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/roboto-slab-v13-latin-regular.woff2") format("woff2"), url("../assets/fonts/roboto-slab-v13-latin-regular.woff") format("woff");
+}
+
+/* roboto-slab-700 - latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/roboto-slab-v13-latin-700.woff2") format("woff2"), url("../assets/fonts/roboto-slab-v13-latin-700.woff") format("woff");
+}
+
 @-webkit-keyframes vibration {
   0% {
     -webkit-transform: translateX(0);
@@ -93,7 +125,7 @@ table {
 body {
   height: 100vh;
   text-align: center;
-  background-image: url(../css/img/hotel-wallpaper.png);
+  background-image: url(../assets/images/hotel-wallpaper.png);
   background-color: #eae1d9;
   background-blend-mode: multiply;
   color: #3d2d4c;
@@ -921,4 +953,4 @@ body .hide {
     width: 60%;
   }
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=main.css.map */
